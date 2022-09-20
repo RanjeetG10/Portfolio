@@ -58,7 +58,7 @@
                 <div class="column right">
                     <div class="text">I'm Ranjeet and I'm a <span class="typing-2"></span></div>
                     <p>Hey there! I'm Ranjeet R. Ghodke. A fullstack Developer having specialization in Front-End and Backend Development. I have worked on several Front-End projects and have 6 months of experience as an intern at Octoedge Technologies Pvt. Limited. My Front- End skills include HTML, CSS, Java Script, Angular, Bootstrap and Backend includes MySQL, Node.js, AWS and Express JS. I am passionate and dedicated about my work and also I love to learn and explore new technologies.</p>
-                    <a href="CV/RanjeetGhodke_Resume.pdf">  Download CV</a>
+                    <a href="CV/RanjeetRESUME.pdf">  Download CV</a>
                 </div>
             </div>
         </div>
@@ -76,7 +76,8 @@
                         <p>  HTML <br>
                              CSS <br>
                               JavaScript  <br>
-                            Bootstrap</p>
+                            Bootstrap <br>
+                            Angular</p>
                     </div>
                 </div>
                 <div class="card">
@@ -194,23 +195,24 @@
                 </div>
                 <div class="column right">
                     <div class="text">Message me</div>
-                    <form action="#">
+                    <form id="frmContact">
                         <div class="fields">
                             <div class="field name">
-                                <input type="text" placeholder="Name" required>
+                                <input type="text" placeholder="Name" id="fullname"  required>
                             </div>
                             <div class="field email">
-                                <input type="email" placeholder="Email" required>
+                                <input type="email" placeholder="Email" id="email" required>
                             </div>
                         </div>
                         <div class="field">
-                            <input type="text" placeholder="Subject" required>
+                            <input type="text" placeholder="Subject" id="subject" required>
                         </div>
                         <div class="field textarea">
-                            <textarea cols="30" rows="10" placeholder="Message.." required></textarea>
+                            <textarea cols="30" rows="10" placeholder="Message.." id="message" required></textarea>
                         </div>
                         <div class="button-area">
-                            <button type="submit">Send message</button>
+                            <button type="submit">Send message</button><br>
+                            <br><div class="alert"> <b> Message Sent Successfully !!!</b> </div>
                         </div>
                     </form>
                 </div>
@@ -226,6 +228,68 @@
         <span>Created By <a href="#">ranjeetghodke10@gmail.com</a>
     </footer>
 
-    <script src="script.js"></script>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
+  import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-database.js";
+
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDkZH4Tk20ygwRI7DqwrqH71fDoeZcABsE",
+    authDomain: "ranjeet-32e27.firebaseapp.com",
+    projectId: "ranjeet-32e27",
+    storageBucket: "ranjeet-32e27.appspot.com",
+    messagingSenderId: "959034056992",
+    appId: "1:959034056992:web:7f0deebd93545e3bdf7745",
+    measurementId: "G-2SK79VC77V"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+        
+        // Get a reference to the database service
+        const db = getDatabase(app);
+        document.getElementById('frmContact').addEventListener('submit', function(e) {
+            e.preventDefault();
+            set(ref(db, 'users/' + Math.random().toString(36).slice(2, 7)), {
+                name: document.getElementById('fullname').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            });
+            alert('Your form is submitted');
+            document.getElementById('frmContact').reset();
+        });
+
+
+        // read data from firebase
+        const dbRef = ref(getDatabase(app));
+
+document.getElementById('frmContact').addEventListener('submit', function(e) {
+    e.preventDefault();
+    set(ref(db, 'users/' + Math.random().toString(36).slice(2, 7)), {
+        name: document.getElementById('fullname').value,
+        email: document.getElementById('email').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value
+    });
+
+    alert('Your form is submitted');
+    document.getElementById('frmContact').reset();
+});
+    </script>        
+    
+
+
+
+
+    <script  src="script.js"></script>
 </body>
 </html>
