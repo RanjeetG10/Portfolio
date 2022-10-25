@@ -42,7 +42,7 @@
                 <div class="text-1">Hello, my name is</div>
                 <div class="text-2">Ranjeet R. Ghodke</div>
                 <div class="text-3">And I'm a <span class="typing"></span></div>
-                <a href="#">Hire me</a>
+                <a href="mailto:ranjeetghodake10@gmail.com">Hire me</a>
             </div>
         </div>
     </section>
@@ -87,6 +87,7 @@
                         <p>  Node.js <br>
                        AWS <br>
                        Express.js
+                       <br>
                     <br>
                     <br>
                 </p>
@@ -97,6 +98,7 @@
                         <i class="fas fa-database"></i>
                         <div class="text"> Data Base </div>
                         <p> My SQL <br>
+                            <br>
                             <br>
                             <br>
                             <br>
@@ -272,18 +274,18 @@
         // read data from firebase
         const dbRef = ref(getDatabase(app));
 
-document.getElementById('frmContact').addEventListener('submit', function(e) {
-    e.preventDefault();
-    set(ref(db, 'users/' + Math.random().toString(36).slice(2, 7)), {
-        name: document.getElementById('fullname').value,
-        email: document.getElementById('email').value,
-        subject: document.getElementById('subject').value,
-        message: document.getElementById('message').value
-    });
+// document.getElementById('frmContact').addEventListener('submit', function(e) {
+//     e.preventDefault();
+//     set(ref(db, 'users/' + Math.random().toString(36).slice(2, 7)), {
+//         name: document.getElementById('fullname').value,
+//         email: document.getElementById('email').value,
+//         subject: document.getElementById('subject').value,
+//         message: document.getElementById('message').value
+//     });
 
-    alert('Your form is submitted');
-    document.getElementById('frmContact').reset();
-});
+//     alert('Your form is submitted');
+//     document.getElementById('frmContact').reset();
+// });
     </script>        
     
 
